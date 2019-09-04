@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+}
+
+body {
+    background-color:#cccac4;
+    width: 100%;
+    height: 100%;
+}
+
+h1.header {
+    text-align: center;
+    color:#8dd6d5;
+}
+
+.header {
+    background-color: black;
+}
