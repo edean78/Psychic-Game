@@ -1,5 +1,9 @@
 // Creat an array of letters the computer will choose from
 var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"];
+// Ready the document
+$(document).ready(function(){
+    console.log("Ready");
+});
 
 // Create variables to hold the value of wins, losses, guesses left, guesses so far
 var wins = 0;
@@ -45,10 +49,11 @@ document.onkeyup = function (event) {
     function addArrayValue(){
         guesses.push(userGuess);
         var arrVal = guesses.join(", ");
+        document.getElementById("guesses-text").innerHTML = arrVal;
     }
 
     function resetArrGuesses(){
-        guessesLeft = 9;
+        guessesLeft = 10;
         guesses = [];
     }
 
