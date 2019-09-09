@@ -10,13 +10,12 @@ var wins = 0;
 var losses = 0;
 var guessesLeft = 10;
 var guesses = [];
-var arrVal;
 
 // Create variables that hold references to the places in the HTML where we want to display things.
-document.getElementById("wins-text").innerHTML = wins;
-document.getElementById("losses-text").innerHTML = losses;
-document.getElementById("guessesleft-text").innerHTML = guessesLeft;
-document.getElementById("guesses-text").innerHTML = guesses;
+var winsText = document.getElementById("wins-text");
+var lossesText = document.getElementById("losses-text");
+var guessesLeftText = document.getElementById("guessesleft-text");
+var guessesText = document.getElementById("guesses-text");
 
 // Randomly chooses a choice from the options array. This is the Computer's guess.
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
@@ -30,34 +29,53 @@ document.onkeyup = function (event) {
     userGuess.toLowerCase();
     console.log("You pressed the letter " + userGuess);
 
-    // Create the logic that handles wins and losses
+    // ToDo: Create function that will compare user guesses to see if the user guess are duplicated
+
+    // Create the logic that handles wins, losses, and missed guesses
 
     if ((userGuess === "a") || (userGuess === "b") || (userGuess === "c") || (userGuess === "d") || (userGuess === "e") || (userGuess === "f") || (userGuess === "g") || (userGuess === "h") || (userGuess === "i") || (userGuess === "j") || (userGuess === "k") || (userGuess === "l") || (userGuess === "m") || (userGuess === "n") || (userGuess === "o") || (userGuess === "p") || (userGuess === "q") || (userGuess === "r") || (userGuess === "s") || (userGuess === "t") || (userGuess === "u") || (userGuess === "v") || (userGuess === "w") || (userGuess === "x") || (userGuess === "y") || (userGuess === "z")) {
         
         if (userGuess === computerGuess){
-            wins++;
+            updateWins();
             resetArrGuesses();
         } else if (guessesLeft === 0){
-            losses++;
+            updateLosses();
             resetArrGuesses();
         } else {
             addArrayValue();
+            missedGuesses();
+        }
+
+    }
+
+    winsText.textContent = wins;
+    lossesText.textContent = losses;
+    guessesLeftText.textContent = guessesLeft;
+
+        function addArrayValue(){
+            guesses.push(userGuess);
+            var arrVal = guesses.join(", ");
+            document.getElementById("guesses-text").innerHTML = arrVal;
+        }
+
+        function resetArrGuesses(){
+            guessesLeft = 10;
+            guesses = [];
+        }
+
+        function missedGuesses (){
             guessesLeft--;
         }
-    }
 
-    function addArrayValue(){
-        guesses.push(userGuess);
-        var arrVal = guesses.join(", ");
-        document.getElementById("guesses-text").innerHTML = arrVal;
-    }
+        function updateLosses(){
+            losses++;
+        }
 
-    function resetArrGuesses(){
-        guessesLeft = 10;
-        guesses = [];
-    }
-
-};
+        function updateWins(){
+            wins++;
+        }
+    
+}
 
 // if (userGuess === computerGuess){
         //     wins++; guessesLeft = 9; textGuess = "";
