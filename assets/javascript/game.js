@@ -34,8 +34,6 @@ document.onkeyup = function (event) {
     userGuess.toLowerCase();
     console.log("You pressed the letter " + userGuess);
 
-    // ToDo: Create function that will compare user guesses to see if the user guess are duplicated
-
     // Create the logic that handles wins, losses, and missed guesses
 
     if ((userGuess === "a") || (userGuess === "b") || (userGuess === "c") || (userGuess === "d") || (userGuess === "e") || (userGuess === "f") || (userGuess === "g") || (userGuess === "h") || (userGuess === "i") || (userGuess === "j") || (userGuess === "k") || (userGuess === "l") || (userGuess === "m") || (userGuess === "n") || (userGuess === "o") || (userGuess === "p") || (userGuess === "q") || (userGuess === "r") || (userGuess === "s") || (userGuess === "t") || (userGuess === "u") || (userGuess === "v") || (userGuess === "w") || (userGuess === "x") || (userGuess === "y") || (userGuess === "z")) {
@@ -55,6 +53,7 @@ document.onkeyup = function (event) {
 
     }
 
+    // Create a function to add user guesses to guesses array
     function addArrayValue() {
         guesses.push(userGuess);
         var arrVal = guesses.join(", ");
@@ -62,27 +61,26 @@ document.onkeyup = function (event) {
         console.log(guesses);
     }
 
+    // Create a function to reset the number of guesses and clear the guesses array
     function resetArrGuesses() {
         guessesLeft = 10;
         guesses = [];
     }
 
+    // Create a function to subtract from the number of guesses left
     function missedGuesses() {
         --guessesLeft;
     }
 
+    // Create a function to calculate losses
     function updateLosses() {
         losses++;
     }
 
+    // Create a function to calculate wins
     function updateWins() {
         wins++;
     }
-
-    function startGame() {
-
-    }
-
 
     winsText.textContent = wins;
     lossesText.textContent = losses;
@@ -90,42 +88,3 @@ document.onkeyup = function (event) {
     guessesText.textContent = guesses;
 
 }
-
-// if (userGuess === computerGuess){
-        //     wins++; guessesLeft = 9; textGuess = "";
-        // }
-
-        // for (var i = 0; i <= guessesLeft; i++) {
-        //     if (userGuess !== computerGuess){
-        //         guesses.append(userGuess);
-        //         guessesLeft--;
-
-        //     } else if (guessesLeft = 0){
-        //         Losses++; guessesLeft = 9; textGuess = "";
-        //     }
-        // }
-
-        // if (userGuess !== computerGuess) {
-        //     guesses.push(userGuess);
-        //     guessesLeft--;
-        // } else if (guessesLeft = 0) {
-        //     losses++;
-        //     guessesLeft = 9;
-        //     guesses = [];
-        // } else if (userGuess === computerGuess) {
-        //     wins++ ,
-        //         guessesLeft = 9,
-        //         guesses = [];
-        // }
-
-// if (userGuess !== computerGuess){
-    //     guesses.push(userGuess),
-    //     guessesLeft --;
-    //     console.log(guesses);
-    //     if (userGuess === computerGuess){
-    //         wins++, guessesLeft = 9, guesses = [];
-    //     } else if (guessesLeft = 0) {
-    //         losses--, guessesLeft = 9, guesses = [];
-    //     }
-
-
