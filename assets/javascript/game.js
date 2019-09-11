@@ -13,10 +13,10 @@ var guesses = [];
 var computerGuess = '';
 
 // Create variables that hold references to the places in the HTML where we want to display things.
-var winsText = document.getElementById("wins-text");
-var lossesText = document.getElementById("losses-text");
-var guessesLeftText = document.getElementById("guessesleft-text");
-var guessesText = document.getElementById("guesses-text");
+document.getElementById("wins-text").innerHTML = wins;
+document.getElementById("losses-text").innerHTML = losses;
+document.getElementById("guessesleft-text").innerHTML = guessesLeft;
+document.getElementById("guesses-text").innerHTML = guesses;
 
 // Randomly chooses a choice from the options array. This is the Computer's guess.
 function cpuGuess() {
@@ -40,6 +40,7 @@ document.onkeyup = function (event) {
 
         if (userGuess === computerGuess) {
             updateWins();
+            document.getElementById("wins-text").innerHTML = wins;
             resetArrGuesses();
             cpuGuess();
         } else if (guessesLeft === 0) {
@@ -75,16 +76,12 @@ document.onkeyup = function (event) {
     // Create a function to calculate losses
     function updateLosses() {
         losses++;
+        document.getElementById("losses-text").innerHTML = losses;
     }
 
     // Create a function to calculate wins
     function updateWins() {
         wins++;
     }
-
-    winsText.textContent = wins;
-    lossesText.textContent = losses;
-    guessesLeftText.textContent = guessesLeft;
-    guessesText.textContent = guesses;
 
 }
