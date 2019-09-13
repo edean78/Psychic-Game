@@ -1,5 +1,3 @@
-// Creat an array of letters the computer will choose from
-var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"];
 // Ready the document
 $(document).ready(function () {
     console.log("Ready");
@@ -11,6 +9,9 @@ var losses = 0;
 var guessesLeft = 10;
 var guesses = [];
 var computerGuess = '';
+
+// Creat an array of letters the computer will choose from
+var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"];
 
 // Create variables that hold references to the places in the HTML where we want to display things.
 document.getElementById("wins-text").innerHTML = wins;
