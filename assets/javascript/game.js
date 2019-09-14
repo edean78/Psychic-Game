@@ -40,17 +40,18 @@ document.onkeyup = function (event) {
     if ((userGuess === "a") || (userGuess === "b") || (userGuess === "c") || (userGuess === "d") || (userGuess === "e") || (userGuess === "f") || (userGuess === "g") || (userGuess === "h") || (userGuess === "i") || (userGuess === "j") || (userGuess === "k") || (userGuess === "l") || (userGuess === "m") || (userGuess === "n") || (userGuess === "o") || (userGuess === "p") || (userGuess === "q") || (userGuess === "r") || (userGuess === "s") || (userGuess === "t") || (userGuess === "u") || (userGuess === "v") || (userGuess === "w") || (userGuess === "x") || (userGuess === "y") || (userGuess === "z")) {
 
         if (userGuess === computerGuess) {
-            updateWins();
+            wins++;
             document.getElementById("wins-text").innerHTML = wins;
-            resetArrGuesses();
+            resetGuesses();
             cpuGuess();
         } else if (guessesLeft === 0) {
             updateLosses();
-            resetArrGuesses();
+            resetGuesses();
             cpuGuess();
         } else {
             addArrayValue();
-            missedGuesses();
+            --guessesLeft;
+            document.getElementById("guessesleft-text").innerHTML = guessesLeft;
         }
 
     }
@@ -64,25 +65,17 @@ document.onkeyup = function (event) {
     }
 
     // Create a function to reset the number of guesses and clear the guesses array
-    function resetArrGuesses() {
+    function resetGuesses() {
         guessesLeft = 10;
+        document.getElementById("guessesleft-text").innerHTML = guessesLeft;
         guesses = [];
-    }
-
-    // Create a function to subtract from the number of guesses left
-    function missedGuesses() {
-        --guessesLeft;
+        document.getElementById("guesses-text").innerHTML = guesses;
     }
 
     // Create a function to calculate losses
     function updateLosses() {
         losses++;
         document.getElementById("losses-text").innerHTML = losses;
-    }
-
-    // Create a function to calculate wins
-    function updateWins() {
-        wins++;
     }
 
 }
